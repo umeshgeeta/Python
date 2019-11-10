@@ -66,6 +66,13 @@ def findunexplorededge(m, size, row, exhaustedsegments):
 		j = j + 1
 	return unexplorededge
 
+# Whether we do backtracking or always forward going; in the end number of steps will be same.
+# As more and more paths get traversed, edges which are not considered will be harder to find.
+# We use adjacency graph to comput the paths. Basically, starting from Node 0, keeping trying
+# to find a fresh path. As you traverse, 'segments' (set of edges) are numbered. The actual
+# path can be one single segment (i.e. one single > 0 number) or combination of multiple
+# segments. We continue to find path until we come to know that there are no more nodes left
+# with '0' edge - STARTING FROM NODE 0. 
 def traversegraph(m, size):
 	pathsfound = []
 	cyclesfound = []
